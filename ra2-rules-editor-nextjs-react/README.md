@@ -1,0 +1,1 @@
+# ra2-rules-editor-nextjs-react
