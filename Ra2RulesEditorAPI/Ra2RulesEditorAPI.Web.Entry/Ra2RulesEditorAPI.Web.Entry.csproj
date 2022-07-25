@@ -8,13 +8,29 @@
 
 	<ItemGroup>
 		<Compile Remove="Controllers\**" />
-		<Compile Remove="wwwroot\**" />
 		<Content Remove="Controllers\**" />
-		<Content Remove="wwwroot\**" />
 		<EmbeddedResource Remove="Controllers\**" />
-		<EmbeddedResource Remove="wwwroot\**" />
 		<None Remove="Controllers\**" />
-		<None Remove="wwwroot\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="wwwroot\404.html" />
+	  <None Include="wwwroot\favicon.ico" />
+	  <None Include="wwwroot\index.html" />
+	  <None Include="wwwroot\vercel.svg" />
+	  <None Include="wwwroot\_next\static\chunks\653-ee371dfa0d2996c7.js" />
+	  <None Include="wwwroot\_next\static\chunks\868.2a81f0a0307b2ab5.js" />
+	  <None Include="wwwroot\_next\static\chunks\framework-b3ca2e9a9574e304.js" />
+	  <None Include="wwwroot\_next\static\chunks\main-5df49e84f4c46624.js" />
+	  <None Include="wwwroot\_next\static\chunks\pages\index-23726bf3a92f33db.js" />
+	  <None Include="wwwroot\_next\static\chunks\pages\_app-c97f7599f8e55782.js" />
+	  <None Include="wwwroot\_next\static\chunks\pages\_error-b2fefde9903df38b.js" />
+	  <None Include="wwwroot\_next\static\chunks\polyfills-c67a75d1b6f99dc8.js" />
+	  <None Include="wwwroot\_next\static\chunks\webpack-25f8ae55a3cc07b6.js" />
+	  <None Include="wwwroot\_next\static\css\8cd94e13d1e311f8.css" />
+	  <None Include="wwwroot\_next\static\css\f3900b39263c874b.css" />
+	  <None Include="wwwroot\_next\static\YMBju3Go0EkZsWSkfCWh8\_buildManifest.js" />
+	  <None Include="wwwroot\_next\static\YMBju3Go0EkZsWSkfCWh8\_ssgManifest.js" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">

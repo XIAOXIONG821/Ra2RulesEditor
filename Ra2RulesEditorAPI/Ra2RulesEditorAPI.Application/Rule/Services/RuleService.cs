@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Ra2RulesEditorAPI.Core.Model;
+﻿using Ra2RulesEditorAPI.Core.Model;
 using Ra2RulesEditorAPI.Core.Utils;
 
 namespace Ra2RulesEditorAPI.Application.Rule.Services
@@ -79,15 +73,13 @@ namespace Ra2RulesEditorAPI.Application.Rule.Services
                 KeyName="SuperWeaponTypes",
                 Remark="超级武器类型",
             },
-        };           
+        };
 
         public List<RuleInfoDtoModel> GetRuleListBySectionNameAndDelegate(string sectionName, KeyTypeEnum keyType)
         {
-
             var keyList = _iniHelper.ReadKeys(sectionName);
 
             var ruleList = new List<RuleInfoDtoModel>();
-
 
             // 获取所有待查询的name.
             var queryNameList = new List<string>();
@@ -103,7 +95,6 @@ namespace Ra2RulesEditorAPI.Application.Rule.Services
                 }
                 else if (keyType == KeyTypeEnum.Section)
                 {
-
                     queryNameList.Add(value);
                 }
 
@@ -146,7 +137,6 @@ namespace Ra2RulesEditorAPI.Application.Rule.Services
                 }
             }
 
-
             return ruleList;
         }
 
@@ -174,7 +164,6 @@ namespace Ra2RulesEditorAPI.Application.Rule.Services
             {
                 data.Remark = remark;
             }
-
         }
 
         public List<RuleInfoModel> SearchRuleInfo(string keyName)
@@ -182,7 +171,7 @@ namespace Ra2RulesEditorAPI.Application.Rule.Services
             var list = _ruleInfoRepository.AsQueryable(false)
                 // 此处不可以使用vs的Contains忽略大小写的传参建议.会报错..
                 .Where(a => a.KeyName.ToLower().Contains(keyName.ToLower()) && a.KeyType == KeyTypeEnum.Key)
-                .OrderBy(a => a.KeyName.Length) // 名称长度较短的排在上面                
+                .OrderBy(a => a.KeyName.Length) // 名称长度较短的排在上面
                 .Take(50) // 只查询前 50 的数据
                 .ToList();
 

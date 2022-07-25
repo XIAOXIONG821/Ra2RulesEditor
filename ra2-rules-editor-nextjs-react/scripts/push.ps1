@@ -1,9 +1,9 @@
 function Run{
     $outFolderName="out"
     $outPath="./"+$outFolderName
-    $csPath="../Ra2RulesEditorAPI/Ra2RulesWebApi/"
+    $csPath="../Ra2RulesEditorAPI/Ra2RulesEditorAPI.Web.Entry/"
     $rootPath=$csPath+"wwwroot"
-
+    
     # build next.js , export HTML
     npx next build
     npx next export

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Ra2RulesEditorAPI.Application.Rule.Services;
+﻿using Ra2RulesEditorAPI.Application.Rule.Services;
 using Ra2RulesEditorAPI.Core.Model;
 using Ra2RulesEditorAPI.Core.Utils;
 
@@ -12,15 +6,14 @@ namespace Ra2RulesEditorAPI.Application.Rule
 {
     public class RuleAppService : IDynamicApiController
     {
-
         private readonly RuleService _ruleService;
         private readonly IniFileHelper _iniHelper;
+
         public RuleAppService(RuleService ruleService, IniFileHelper iniHelper)
         {
             _ruleService = ruleService;
             _iniHelper = iniHelper;
         }
-
 
         // TODO: 查询多条 需要和前端虚拟表格 做分页.
 
@@ -45,7 +38,7 @@ namespace Ra2RulesEditorAPI.Application.Rule
         {
             return _ruleService.GetRuleListBySectionNameAndDelegate(
                 typesName, KeyTypeEnum.Section)
-                .OrderByDescending(a => a.Remark)// 排序 ,按照汉字首字母 倒序. (空值会排到最后)                
+                .OrderByDescending(a => a.Remark)// 排序 ,按照汉字首字母 倒序. (空值会排到最后)
                 .ToList();
         }
 
@@ -77,7 +70,6 @@ namespace Ra2RulesEditorAPI.Application.Rule
         [HttpPost]
         public bool AddOrUpdateRuleInfo(RuleInfoDtoModel data)
         {
-
             _iniHelper.WriteString(data.SectionName, data.KeyName, data.CurrentValue);
 
             _ruleService.AddOrUpdateKeyRemark(data.KeyName, data.Remark);

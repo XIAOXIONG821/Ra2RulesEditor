@@ -1,4 +1,5 @@
 ﻿using Furion;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ra2RulesEditorAPI.EntityFramework.Core;

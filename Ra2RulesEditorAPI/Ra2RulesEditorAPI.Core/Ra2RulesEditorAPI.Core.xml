@@ -4,6 +4,14 @@
         <name>Ra2RulesEditorAPI.Core</name>
     </assembly>
     <members>
+        <member name="M:Microsoft.Extensions.DependencyInjection.ResponseCompression.AddMyResponseCompression(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+             <summary>
+             响应压缩
+            
+             services.AddMyResponseCompression(); 需要配合 app.UseResponseCompression();
+             </summary>
+             <param name="services"></param>
+        </member>
         <member name="P:Ra2RulesEditorAPI.Core.Model.RuleInfoModel.KeyType">
             <summary>
             key的类型 (1:section , 2:属性)

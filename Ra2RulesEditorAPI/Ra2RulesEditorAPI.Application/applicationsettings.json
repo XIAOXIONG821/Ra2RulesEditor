@@ -33,7 +33,5 @@
     "KeepVerb": true,
     "LowercaseRoute": false,
     "DefaultRoutePrefix": "Api"
-
   }
-
 }

@@ -1,22 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 using Furion.DatabaseAccessor;
 using Furion.DependencyInjection;
-
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Ra2RulesEditorAPI.Core.Model
 {
     [Table("RuleInfo")]
     public class RuleInfoModel : EntityBase
     {
-
         public string? KeyName { get; set; }
         public string? Remark { get; set; }
 
@@ -24,8 +15,6 @@ namespace Ra2RulesEditorAPI.Core.Model
         /// key的类型 (1:section , 2:属性)
         /// </summary>
         public KeyTypeEnum? KeyType { get; set; }
-
-
     }
 
     public enum KeyTypeEnum

@@ -6,6 +6,7 @@
 public class SystemAppService : IDynamicApiController
 {
     private readonly ISystemService _systemService;
+
     public SystemAppService(ISystemService systemService)
     {
         _systemService = systemService;
