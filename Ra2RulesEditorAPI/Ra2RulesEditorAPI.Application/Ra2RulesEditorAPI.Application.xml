@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ra2RulesEditorAPI.Application</name>
+    </assembly>
+    <members>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.GetRuleListBySectionName(System.String)">
+            <summary>
+             查询 单位 下所有的 rulesInfo
+            </summary>
+            <param name="sectionName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.GetRuleListByTypeName(System.String)">
+            <summary>
+            查询typesName 下所有的 rulesInfo
+            </summary>
+            <param name="typesName">游戏对象类型名称 (比如 "步兵类型")</param>
+            <returns></returns>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.GetSettingList">
+            <summary>
+            获取 设置列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.GetTypeList">
+            <summary>
+            获取 类型列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.AddOrUpdateRuleInfo(Ra2RulesEditorAPI.Core.Model.RuleInfoDtoModel)">
+            <summary>
+            添加或更新RuleInfo
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.AddOrUpdateSectionRemark(Ra2RulesEditorAPI.Core.Model.RuleInfoDtoModel)">
+            <summary>
+            添加或更新Remark
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.SearchRuleInfo(System.String)">
+            <summary>
+            搜索
+            </summary>
+            <param name="keyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.Rule.RuleAppService.DeleteRule(System.String,System.String)">
+            <summary>
+            删除
+            </summary>
+            <param name="sectionName"></param>
+            <param name="keyName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Ra2RulesEditorAPI.Application.Rule.Services.RuleService.SettingList">
+            <summary>
+            游戏相关的设置列表
+            </summary>
+        </member>
+        <member name="P:Ra2RulesEditorAPI.Application.Rule.Services.RuleService.TypeList">
+            <summary>
+            对象种类列表
+            </summary>
+        </member>
+        <member name="T:Ra2RulesEditorAPI.Application.SystemAppService">
+            <summary>
+            系统服务接口
+            </summary>
+        </member>
+        <member name="M:Ra2RulesEditorAPI.Application.SystemAppService.GetDescription">
+            <summary>
+            获取系统描述
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

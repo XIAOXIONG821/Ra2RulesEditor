@@ -2,9 +2,10 @@ import {
   PlusCircleOutlined,
   EditOutlined,
   DeleteOutlined,
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Input, Modal, Popover } from "antd";
+import { Button, Input, Modal, Popconfirm, Popover } from "antd";
 import classNames from "classnames";
 import { cloneDeep, debounce } from "lodash-es";
 import { FC, memo, useEffect, useMemo, useState } from "react";
@@ -14,10 +15,10 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { FixedSizeGrid } from "react-window";
 import { RulesInfoModel, RulesInfoModelValidate } from "../model";
 import {
-  GetRulesListBySectionName,
-  AddOrUpdateRulesInfo,
+  GetRuleListBySectionName,
+  AddOrUpdateRuleInfo,
   DeleteRule,
-  SearchRulesInfo,
+  SearchRuleInfo,
 } from "../utils/my-axios";
 import MySkeleton from "./MySkeleton";
 
@@ -81,7 +82,7 @@ let RulesList: FC<{ name?: string; remark?: string; prefixTitle?: string }> = (
   const rulesListQuery = useQuery(
     rulesListQueryKey,
     async () => {
-      let data = await GetRulesListBySectionName(currentSectionName!);
+      let data = await GetRuleListBySectionName(currentSectionName!);
       return data;
     },
     {
@@ -92,7 +93,7 @@ let RulesList: FC<{ name?: string; remark?: string; prefixTitle?: string }> = (
   //(服务器) 添加 / 修改
   let addOrUpdateRulesInfoMutation = useMutation(
     (v: RulesInfoModel) =>
-      AddOrUpdateRulesInfo({ ...v, sectionName: currentSectionName }),
+      AddOrUpdateRuleInfo({ ...v, sectionName: currentSectionName }),
     {
       onSuccess: (d, v, c) => {
         if (d === true) {
@@ -244,11 +245,16 @@ let RulesList: FC<{ name?: string; remark?: string; prefixTitle?: string }> = (
                       icon={<EditOutlined />}
                       onClick={() => rulesListRowClick(item)}
                     ></Button>
-                    <Button
-                      icon={<DeleteOutlined />}
-                      danger
-                      onClick={() => deleteRule(item)}
-                    ></Button>
+
+                    <Popconfirm
+                      title="确定删除？"
+                      icon={<QuestionCircleOutlined style={{ color: "red" }} />}
+                      onConfirm={() => deleteRule(item)}
+                      okText='确定'
+                      cancelText='取消'
+                    >
+                      <Button icon={<DeleteOutlined />} danger></Button>
+                    </Popconfirm>
                   </div>
                 </div>
               </div>
@@ -340,7 +346,7 @@ let ModalForm: FC<{
 
       if (axiosState == false) {
         setAxiosState(true);
-        SearchRulesInfo(currentValue).then((r) => {
+        SearchRuleInfo(currentValue).then((r) => {
           setSearchList(r);
           setAxiosState(false);
         });

@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ra2RulesEditorAPI.EntityFramework.Core\Ra2RulesEditorAPI.EntityFramework.Core.csproj" />
+  </ItemGroup>
+
+</Project>

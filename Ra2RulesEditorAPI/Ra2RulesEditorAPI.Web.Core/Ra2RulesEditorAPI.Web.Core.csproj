@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>Ra2RulesEditorAPI.Web.Core.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Ra2RulesEditorAPI.Web.Core.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ra2RulesEditorAPI.Application\Ra2RulesEditorAPI.Application.csproj" />
+    <ProjectReference Include="..\Ra2RulesEditorAPI.Database.Migrations\Ra2RulesEditorAPI.Database.Migrations.csproj" />
+  </ItemGroup>
+
+</Project>

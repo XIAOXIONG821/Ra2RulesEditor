@@ -1,11 +1,20 @@
 
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { RulesInfoModel } from "../model";
 
 let MyAxios = axios.create({
-    baseURL: "http://localhost:5000/Editor",
+    baseURL: "http://localhost:5000/Api/Rule",
     timeout: 15000,
 });
+
+interface IResultModel<T = any> {
+    "statusCode": number,
+    "data": T,
+    "succeeded": boolean,
+    "errors": string,
+    "extras": string,
+    "timestamp": number
+}
 
 // 请求拦截器
 MyAxios.interceptors.request.use(
@@ -23,13 +32,13 @@ MyAxios.interceptors.request.use(
 
 // 响应拦截器
 MyAxios.interceptors.response.use(
-    (response) => {
+    (res: AxiosResponse<IResultModel>) => {
         // 正常返回的异常,显示提示信息
-        if (response.status != 200) {
-            console.warn("服务器返回的异常:", response);
+        if (res.data.statusCode != 200) {
+            console.warn("服务器返回的异常:", res.data);
         }
         //取出 数据
-        return response.data;
+        return res.data.data;
     },
     function (error) {
         // 对响应错误做点什么
@@ -39,33 +48,19 @@ MyAxios.interceptors.response.use(
     }
 );
 
-export function SearchRulesInfo(keyName: string) {
-    return MyAxios.get<any, RulesInfoModel[]>("SearchRulesInfo", {
-        params: {
-            keyName: keyName,
-        },
-    })
-}
+
 export function GetSettingList() {
     return MyAxios.get<any, RulesInfoModel[]>("GetSettingList")
 }
-export function GetTypesList() {
-    return MyAxios.get<any, RulesInfoModel[]>("GetTypesList")
+export function GetTypeList() {
+    return MyAxios.get<any, RulesInfoModel[]>("GetTypeList")
 }
-export function GetRulesListByTypesName(typesName: string) {
-    return MyAxios.get<any, RulesInfoModel[]>("GetRulesListByTypesName", {
-        params: {
-            typesName: typesName,
-        },
-    })
+export function GetRuleListByTypeName(typeName: string) {
+    return MyAxios.get<any, RulesInfoModel[]>(`GetRuleListByTypeName/${typeName}`)
 }
 
-export function GetRulesListBySectionName(sectionName: string) {
-    return MyAxios.get<any, RulesInfoModel[]>("GetRulesListBySectionName", {
-        params: {
-            sectionName: sectionName,
-        },
-    })
+export function GetRuleListBySectionName(sectionName: string) {
+    return MyAxios.get<any, RulesInfoModel[]>(`GetRuleListBySectionName/${sectionName}`)
 }
 export function AddOrUpdateSectionRemark(sectionName: string, remark: string) {
     return MyAxios.post<any, boolean>("AddOrUpdateSectionRemark", {
@@ -73,16 +68,15 @@ export function AddOrUpdateSectionRemark(sectionName: string, remark: string) {
         remark: remark,
     })
 }
-export function AddOrUpdateRulesInfo(data: RulesInfoModel) {
-    return MyAxios.post<any, boolean>("AddOrUpdateRulesInfo", data)
+export function AddOrUpdateRuleInfo(data: RulesInfoModel) {
+    return MyAxios.post<any, boolean>("AddOrUpdateRuleInfo", data)
+}
+
+export function SearchRuleInfo(keyName: string) {
+    return MyAxios.get<any, RulesInfoModel[]>(`SearchRuleInfo/${keyName}`)
 }
 
 export function DeleteRule({ sectionName, keyName }: RulesInfoModel) {
-    console.log(sectionName,keyName);
-    
-    return MyAxios.post<any, boolean>("DeleteRule", {
-        sectionName:sectionName,
-        keyName:keyName
-    })
+    return MyAxios.delete<any, boolean>(`DeleteRule/${sectionName}/${keyName}`)
 }
 export default MyAxios;

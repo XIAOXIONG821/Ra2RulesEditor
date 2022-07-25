@@ -2,9 +2,9 @@ import { useMemo, useState } from "react";
 import { FixedSizeGrid } from "react-window";
 import {
   AddOrUpdateSectionRemark,
-  GetRulesListByTypesName,
+  GetRuleListByTypeName,
   GetSettingList,
-  GetTypesList,
+  GetTypeList,
 } from "../utils/my-axios";
 import classNames from "classnames";
 import { debounce, cloneDeep } from "lodash-es";
@@ -42,7 +42,7 @@ function Index() {
   //#region 顶部 Query
   const settingListQuery = useQuery(["GetSettingList"], GetSettingList);
 
-  const typesListQuery = useQuery(["GetTypesList"], GetTypesList);
+  const typesListQuery = useQuery(["GetTypesList"], GetTypeList);
   //#endregion
 
   //#region 侧边栏 Query
@@ -55,7 +55,7 @@ function Index() {
   const typesDetailListQuery = useQuery(
     typesDetailListQueryKey,
     async () => {
-      let data = await GetRulesListByTypesName(currentTypesName!);
+      let data = await GetRuleListByTypeName(currentTypesName!);
       return data;
     },
     {
